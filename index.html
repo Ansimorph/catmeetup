@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Vienna CAT Meetup #1</title>
+    <style>
+      * {
+        box-sizing: border-box;
+        &::before,
+        &::after {
+          box-sizing: border-box;
+        }
+      }
+
+      :root {
+        --background-color: #e7fff6;
+        --foreground-color: #008080;
+      }
+
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 2rem;
+
+        background-color: var(--background-color);
+        color: var(--foreground-color);
+        font-family: sans-serif;
+        font-size: 110%;
+      }
+
+      button {
+        padding: 0 2rem;
+        appearance: none;
+        background-color: var(--foreground-color);
+        color: var(--background-color);
+        font-size: 1.2rem;
+        border: 0;
+        height: 3rem;
+        border-radius: 1.5rem;
+        cursor: pointer;
+      }
+
+      .attendance-button--attending::after {
+        content: "✔";
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>Vienna CAT Meetup #1</h1>
+      <button class="attendance-button" id="attendanceButton">
+        I'm attending
+      </button>
+    </main>
+  </body>
+  <script>
+    const button = document.getElementById("attendanceButton");
+    const ATTENDING_CLASS = "attendance-button--attending";
+    const API_KEY =
+      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InN4aGR3ZWlqY3Jybndkc3J6dHh4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODY3MjU2NTUsImV4cCI6MjAwMjMwMTY1NX0.PBwAKif0eTkme_8dJpfxFAUYAKFyflCFiyQTRBLsFME";
+    const FETCH_OPTIONS = {
+      method: "POST",
+      headers: {
+        Apikey: API_KEY,
+        Authorization: `Bearer ${API_KEY}`,
+      },
+    };
+
+    function isAttending() {
+      return localStorage.getItem("attending") === "true";
+    }
+
+    if (isAttending()) button.classList.add(ATTENDING_CLASS);
+
+    button.addEventListener("click", () => {
+      button.classList.toggle(ATTENDING_CLASS);
+
+      if (isAttending()) {
+        fetch(
+          "https://sxhdweijcrrnwdsrztxx.supabase.co/rest/v1/rpc/decrement_by_one",
+          FETCH_OPTIONS
+        ).then(() => {
+          localStorage.setItem("attending", false);
+        });
+      } else {
+        fetch(
+          "https://sxhdweijcrrnwdsrztxx.supabase.co/rest/v1/rpc/increment_by_one",
+          FETCH_OPTIONS
+        ).then(() => {
+          localStorage.setItem("attending", true);
+        });
+      }
+    });
+  </script>
+</html>
