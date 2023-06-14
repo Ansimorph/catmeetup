@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width">
+    <meta name="viewport" content="width=device-width" />
     <title>Vienna CAT Meetup #1</title>
     <style>
       * {
@@ -29,6 +29,22 @@
         color: var(--foreground-color);
         font-family: sans-serif;
         font-size: 110%;
+        line-height: 1.4;
+      }
+
+      h1 {
+        max-width: 20ch;
+        font-family: monospace;
+        font-weight: bolder;
+      }
+
+      p {
+        max-width: 38ch;
+        margin-block: 1rem;
+      }
+
+      .spacer {
+        margin-bottom: 4rem;
       }
 
       button {
@@ -45,23 +61,45 @@
 
       .attendance-button--attending::after {
         content: "✔";
+        animation: check 0.1s ease-in-out;
+      }
+
+      @keyframes check {
+        0% {
+          clip-path: inset(0 100% 0 0);
+        }
+        100% {
+          clip-path: inset(0);
+        }
       }
     </style>
   </head>
 
   <body>
     <main>
-      <h1>Vienna CAT Meetup #1</h1>
-      <button class="attendance-button" id="attendanceButton">
-        I'm attending
-      </button>
+      <h1 class="spacer">Vienna Climate Action Tech Meetup #1</h1>
+      <p class="spacer">
+        Join us if you'd like to talk about climate and tech. Whether it's
+        making tech greener or using tech to accelerate climate action.<br />
+        Also if you really like fast and sustainable websites.
+      </p>
+
+      <p><strong>Where:</strong> Location <br /></p>
+      <p class="spacer"><strong>When:</strong> Date</p>
+
+      <p>Let us know if you're coming:</p>
+      <p>
+        <button class="attendance-button" id="attendanceButton">
+          I'm attending
+        </button>
+      </p>
     </main>
   </body>
 
   <script>
     const button = document.getElementById("attendanceButton");
     const ATTENDING_CLASS = "attendance-button--attending";
-    const ATTENDING_STORAGE_KEY = "attending-1"
+    const ATTENDING_STORAGE_KEY = "attending-1";
     const API_KEY =
       "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InN4aGR3ZWlqY3Jybndkc3J6dHh4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODY3MjU2NTUsImV4cCI6MjAwMjMwMTY1NX0.PBwAKif0eTkme_8dJpfxFAUYAKFyflCFiyQTRBLsFME";
     const FETCH_OPTIONS = {
