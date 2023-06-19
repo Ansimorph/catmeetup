@@ -2,9 +2,12 @@
   "source": "index.html",
   "scripts": {
     "start": "parcel",
-    "build": "parcel build"
+    "build": "parcel build",
+    "generateOgImage": "convert-svg-to-png ./static/vienna-cat-meetup.svg"
   },
   "devDependencies": {
-    "parcel": "^2.9.2"
+    "convert-svg-to-png": "^0.6.4",
+    "parcel": "^2.9.2",
+    "parcel-reporter-static-files-copy": "^1.5.0"
   }
 }
