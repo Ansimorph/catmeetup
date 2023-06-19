@@ -165,41 +165,40 @@
         </li>
       </ul>
     </footer>
-  </body>
+    <script>
+      const button = document.getElementById("attendanceButton");
+      const ATTENDING_CLASS = "attendance-button--attending";
+      const ATTENDING_STORAGE_KEY = "attending-1";
+      const API_URL = "https://sxhdweijcrrnwdsrztxx.supabase.co/rest/v1";
+      const API_KEY =
+        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InN4aGR3ZWlqY3Jybndkc3J6dHh4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODY3MjU2NTUsImV4cCI6MjAwMjMwMTY1NX0.PBwAKif0eTkme_8dJpfxFAUYAKFyflCFiyQTRBLsFME";
+      const FETCH_OPTIONS = {
+        method: "POST",
+        headers: {
+          Apikey: API_KEY,
+          Authorization: `Bearer ${API_KEY}`,
+        },
+      };
 
-  <script>
-    const button = document.getElementById("attendanceButton");
-    const ATTENDING_CLASS = "attendance-button--attending";
-    const ATTENDING_STORAGE_KEY = "attending-1";
-    const API_URL = "https://sxhdweijcrrnwdsrztxx.supabase.co/rest/v1";
-    const API_KEY =
-      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InN4aGR3ZWlqY3Jybndkc3J6dHh4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODY3MjU2NTUsImV4cCI6MjAwMjMwMTY1NX0.PBwAKif0eTkme_8dJpfxFAUYAKFyflCFiyQTRBLsFME";
-    const FETCH_OPTIONS = {
-      method: "POST",
-      headers: {
-        Apikey: API_KEY,
-        Authorization: `Bearer ${API_KEY}`,
-      },
-    };
-
-    function isAttending() {
-      return localStorage.getItem(ATTENDING_STORAGE_KEY) === "true";
-    }
-
-    if (isAttending()) button.classList.add(ATTENDING_CLASS);
-
-    button.addEventListener("click", () => {
-      button.classList.toggle(ATTENDING_CLASS);
-
-      if (isAttending()) {
-        fetch(`${API_URL}/rpc/decrement_by_one`, FETCH_OPTIONS).then(() => {
-          localStorage.setItem(ATTENDING_STORAGE_KEY, false);
-        });
-      } else {
-        fetch(`${API_URL}/rpc/increment_by_one`, FETCH_OPTIONS).then(() => {
-          localStorage.setItem(ATTENDING_STORAGE_KEY, true);
-        });
+      function isAttending() {
+        return localStorage.getItem(ATTENDING_STORAGE_KEY) === "true";
       }
-    });
-  </script>
+
+      if (isAttending()) button.classList.add(ATTENDING_CLASS);
+
+      button.addEventListener("click", () => {
+        button.classList.toggle(ATTENDING_CLASS);
+
+        if (isAttending()) {
+          fetch(`${API_URL}/rpc/decrement_by_one`, FETCH_OPTIONS).then(() => {
+            localStorage.setItem(ATTENDING_STORAGE_KEY, false);
+          });
+        } else {
+          fetch(`${API_URL}/rpc/increment_by_one`, FETCH_OPTIONS).then(() => {
+            localStorage.setItem(ATTENDING_STORAGE_KEY, true);
+          });
+        }
+      });
+    </script>
+  </body>
 </html>
