@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta description="Vienna CAT Meetup #1" />
+    <meta name="description" content="Vienna CAT Meetup #1" />
     <meta name="viewport" content="width=device-width" />
     <title>Vienna CAT Meetup #1</title>
     <style>
@@ -21,8 +21,10 @@
       }
 
       body {
-        display: flex;
+        min-height: calc(100lvh - 2rem);
+        display: grid;
         justify-content: center;
+        gap: 4rem;
         align-items: center;
         padding: 2rem;
 
@@ -46,6 +48,10 @@
 
       .spacer {
         margin-bottom: 4rem;
+      }
+
+      a {
+        color: inherit;
       }
 
       button {
@@ -73,6 +79,14 @@
           clip-path: inset(0);
         }
       }
+
+      .link-list {
+        font-size: 0.9em;
+        list-style: none;
+        padding: 0;
+        display: flex;
+        gap: 1rem;
+      }
     </style>
   </head>
 
@@ -81,7 +95,9 @@
       <h1 class="spacer">Vienna Climate Action Tech Meetup #1</h1>
       <p class="spacer">
         Join us if you'd like to talk about climate and tech. Whether it's
-        making tech greener or using tech to accelerate climate action.<br />
+        <a href="https://climateaction.tech/about/">
+          making tech greener or using tech to accelerate climate action. </a
+        ><br />
         Also if you really like fast and sustainable websites.
       </p>
 
@@ -95,6 +111,18 @@
         </button>
       </p>
     </main>
+    <footer>
+      <ul class="link-list">
+        <li>
+          <a href="https://github.com/climateaction-tech/codeofconduct">
+            Code of conduct
+          </a>
+        </li>
+        <li>
+          <a href="https://ganslandt.xyz/imprint/"> Imprint </a>
+        </li>
+      </ul>
+    </footer>
   </body>
 
   <script>
