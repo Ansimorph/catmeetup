@@ -1,12 +1,14 @@
 <svg fill="none" height="630" viewBox="0 0 1200 630" width="1200" xmlns="http://www.w3.org/2000/svg">
   <path d="m0 0h1200v630h-1200z" fill="#e7fff6" />
     <text fill="#008080" font-size="48" font-family="monospace"  font-weight="bold">
-      <tspan x="29.5%" y="150">Vienna Climate</tspan>
-      <tspan x="29.5%" dy="60">Action Tech Meetup</tspan>
-      <tspan x="29.5%" dy="60">#1</tspan>
+      <tspan x="29%" y="150">Vienna Climate</tspan>
+      <tspan x="29%" dy="60">Action Tech Meetup</tspan>
+      <tspan x="29%" dy="60">#2</tspan>
     </text>
     <text fill="#008080" font-size="32" font-family="sans-serif" >
-      <tspan x="29.5%" y="400">12.7. 18:30</tspan>
-      <tspan x="29.5%" dy="60">Am Rustensteg 1, 1150 Wien</tspan>
+      <tspan x="29%" y="400">21.5. 19:00</tspan>
+      <tspan x="29%" dy="60">
+          Kununu, Schottenring 2-6, 1010 Wien
+      </tspan>
     </text>
 </svg>
